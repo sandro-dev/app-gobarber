@@ -5,3 +5,10 @@ export const Container = styled.View`
   align-items: center;
   justify-content: center;
 `;
+
+export const Text = styled.Text`
+  font-size: 24px;
+  color: #f4ede8;
+  font-family: 'RobotoSlab-Medium';
+  margin: 64px 0 24px;
+`;
