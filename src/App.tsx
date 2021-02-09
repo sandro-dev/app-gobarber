@@ -1,13 +1,22 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StatusBar } from 'react-native';
 
 // import { Container } from './styles';
 
 const App: React.FC = () => {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>App Gobarber</Text>
-    </View>
+    <>
+      <StatusBar barStyle='dark-content' backgroundColor="#312e38" />
+      <View style={
+        {
+          flex: 1,
+          alignItems: 'center',
+          backgroundColor:"#312e38",
+          justifyContent: 'center'}
+        }>
+        <Text style={{color: '#fff'}}>App Gobarber</Text>
+      </View>
+    </>
   );
 };
 
