@@ -1,12 +1,57 @@
 import React from 'react';
-import { Text } from 'react-native';
+import {
+  Image, View, KeyboardAvoidingView, ScrollView, Platform,
+} from 'react-native';
 
-import { Container } from './styles';
+import Icon from 'react-native-vector-icons/Feather';
+import { useNavigation } from '@react-navigation/native';
 
-const SignUp: React.FC = () => (
-  <Container>
-    <Text>SignUp page</Text>
-  </Container>
-);
+import Input from '../../components/Input';
+import Button from '../../components/Button';
+import logoImg from '../../assets/logo.png';
+
+import {
+  Container, Text, BackToSignIn, BackToSignInText,
+} from './styles';
+
+const SignUp: React.FC = () => {
+  const navigation = useNavigation();
+
+  return (
+    <>
+      <KeyboardAvoidingView
+        enabled
+        style={{ flex: 1 }}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+      >
+
+        <ScrollView
+          contentContainerStyle={{ flex: 1 }}
+          keyboardShouldPersistTaps="handled"
+        >
+          <Container>
+            <Image source={logoImg} />
+
+            <View>
+              <Text>Crie sua conta</Text>
+            </View>
+
+            <Input name="name" icon="user" placeholder="Nome" />
+            <Input name="email" icon="mail" placeholder="E-mail" />
+            <Input name="password" icon="lock" placeholder="Senha" />
+
+            <Button onPress={() => { console.log('Enter'); }}>Cadastrar</Button>
+
+          </Container>
+        </ScrollView>
+      </KeyboardAvoidingView>
+
+      <BackToSignIn onPress={() => navigation.navigate('SignIn')}>
+        <Icon name="arrow-left" size={20} color="#f4ede8" />
+        <BackToSignInText>Voltar para o login</BackToSignInText>
+      </BackToSignIn>
+    </>
+  );
+};
 
 export default SignUp;
